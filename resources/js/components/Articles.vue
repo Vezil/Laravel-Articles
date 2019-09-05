@@ -1,15 +1,15 @@
 <template>
     <div>
-        <h2>Articles</h2>
+        <h2 class="mt-5 maintitle">Articles</h2>
 
-        <form @submit.prevent="addArticle" class="mb-3">
+        <form @submit.prevent="addArticle" class="mb-3 mt-3">
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Title" v-model="article.title">
             </div>
              <div class="form-group">
                 <textarea class="form-control" placeholder="Body" v-model="article.body"></textarea>
             </div>
-            <button type="submit" class="btn btn-light btn-block">Save</button>
+            <button type="submit" class="btn btn-primary btn-block">Save</button>
         </form>
         <nav aria-label="Page navigation example">
         <ul class="pagination">
@@ -140,3 +140,41 @@ export default {
     }
 };
 </script>
+
+<style>
+
+body{
+    background-color:bisque;
+    font-family: 'News Cycle', sans-serif;
+}
+.card-body{
+    background-color: cornsilk;
+    border-radius: 11px;
+    -moz-border-radius: 11px;
+    -webkit-border-radius: 11px;
+    -webkit-box-shadow: 10px 10px 57px -25px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 57px -25px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 57px -25px rgba(0,0,0,0.75);
+    
+}
+
+.form-group,.form-control{
+    background-color:lemonchiffon;
+    -webkit-box-shadow: 10px 10px 57px -25px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 57px -25px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 57px -25px rgba(0,0,0,0.75);
+
+}
+
+.page-item{
+    background-color:blue;
+
+}
+
+.maintitle{
+
+font-family: 'Righteous', cursive;
+
+}
+
+</style>
