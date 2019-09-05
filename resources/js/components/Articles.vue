@@ -6,6 +6,10 @@
             <li v-bind:class="[{disabled: !pagination.prev_page_url}]"
              class="page-item"><a class="page-link" href="#"
              @click="fetchArticles(pagination.prev_page_url)">Previous</a></li>
+
+            <li class="page-item disabled"><a class="page-link text-dark" href="#">Page {{ pagination.current_page }} of {{ pagination.last_page }}</a></li>
+
+
             <li v-bind:class="[{disabled: !pagination.next_page_url}]"
              class="page-item" ><a class="page-link" href="#" @click="fetchArticles(pagination.next_page_url)">Next</a></li>
         </ul>
@@ -14,6 +18,8 @@
         <div class="card card-body mb-2" v-for="article in articles" v-bind:key="article.id">
             <h3>{{ article.title }}</h3>
             <p>{{ article.body }}</p>
+            <hr>
+            <button @click="deleteArticle(article.id)" class="btn btn-danger">Delete</button>
         </div>
     </div>
 </template>
@@ -57,6 +63,20 @@ export default {
                 prev_page_url: links.prev
             }
             this.pagination = pagination;
+        },
+        deleteArticle(id) {
+            if(confirm('Are You Sure?')){
+                fetch(`api/article/${id}`, {
+                    method: 'delete'
+                })
+                .then(res => res.json())
+                .then(data => {
+                    alert('Article Removed');
+                    this.fetchArticles();
+                })
+                .catch(err => console.log(err));
+            }
+
         }
     }
 };
